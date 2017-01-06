@@ -27,7 +27,7 @@ class UsuariosController extends Controller {
 	}
 
 
-	//presenta el formulario para nuevo usuario
+	//Formulario para nuevo usuario
 	public function crear_usuario()
 	{
 
@@ -52,8 +52,5 @@ class UsuariosController extends Controller {
 		{
              return view("mensajes.incorrecto")->with("mensaje","Hubo un error vuelva a intentarlo");
 		}
-
-
 	}
-
 }

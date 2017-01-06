@@ -30,4 +30,10 @@ class FormulariosController extends Controller {
 		return view('formularios.nuevo_usuario');
 	}
 
+    //presenta el formulario para nuevo usuario
+    public function nuevo_equipo()
+    {
+        return view('formularios.nuevo_equipo');
+    }
+
 }

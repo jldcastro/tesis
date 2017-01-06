@@ -26,3 +26,11 @@ Route::get('home', 'HomeController@index');
 // Rutas usuarios
 Route::get('nuevo_usuario', 'FormulariosController@nuevo_usuario');
 Route::post('crear_usuario', 'UsuariosController@crear_usuario');
+Route::get('lista_usuarios/{page?}', 'ListasController@lista_usuarios');
+Route::get('actualizar_usuario/{id}', 'UsuariosController@actualizar_usuario');
+Route::post('actualizar_usuario', 'UsuariosController@actualizar_usuario');
+
+//Rutas equipos
+Route::get('nuevo_equipo', 'FormulariosController@nuevo_equipo');
+Route::post('crear_equipo', 'EquiposController@crear_equipo');
+Route::get('lista_equipos/{page?}', 'ListasController@lista_equipos');
