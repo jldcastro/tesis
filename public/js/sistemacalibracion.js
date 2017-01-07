@@ -28,38 +28,38 @@ function lista_usuarios(lista){
             })
 }
 
-function form_equipo(argumento){
-//funcion para cargar formularios del sistema
-
-    if(argumento==1)
-    {
-        var ruta = "nuevo_equipo";
-    }
-
-    $("#contenido_principal").html($("#cargador").html());
-
+function editar_usuario(id_usuario) {
+//funcion para mostrar y actualizar la informacion de un usuario
+    $("#capa_modal").show();
+    $("#capa_para_edicion").show();
+    var ruta = "editar_usuario/"+id_usuario+"";
+    $("#capa_para_edicion").html($("#cargador").html());
     $.get(ruta,function(resultado){
-        $("#contenido_principal").html(resultado);
+        $("#capa_para_edicion").html(resultado);
     })
 }
 
-function lista_equipos(lista){
-//funcion para cargar el listado de usuarios
-
-    if(lista==1)
-    {
-        var ruta = "lista_equipos";
-    }
-
-    $("#contenido_principal").html($("#cargador").html());
-
+function mostrar_usuario(id_usuario) {
+//funcion para mostrar y actualizar la informacion de un usuario
+    $("#capa_modal").show();
+    $("#capa_para_edicion").show();
+    var ruta = "mostrar_usuario/"+id_usuario+"";
+    $("#capa_para_edicion").html($("#cargador").html());
     $.get(ruta,function(resultado){
-        $("#contenido_principal").html(resultado);
+        $("#capa_para_edicion").html(resultado);
     })
 }
+
+$(document).on("click",".div_modal",function(e){
+//funcion para ocultar las capas modales
+    $("#capa_modal").hide();
+    $("#capa_para_edicion").hide();
+    $("#capa_para_edicion").html("");
+
+})
 
  $(document).on("submit",".formulario",function(e){
-//funcion para atrapar los formularios y enviar los datos
+//funcion para atrapar el formulario de usuarios y enviar los datos
 
      e.preventDefault();
         $('html, body').animate({scrollTop: '0px'}, 200);
@@ -68,6 +68,8 @@ function lista_equipos(lista){
         var usuario=$(this).attr("id");
         
         if(usuario=="nuevo_usuario"){ var ruta="crear_usuario"; var nota="notificacion"; }
+
+        if(usuario=="editar_usuario"){ var ruta="actualizar_usuario"; var nota="notificacion"; }
    
         $("#"+nota+"").html($("#cargador").html());
 
@@ -80,36 +82,12 @@ function lista_equipos(lista){
                     success : function(resultado){
 
                         $("#"+nota+"").html(resultado);
-                        $('#'+usuario+'').trigger("reset");
+                        if(usuario==nuevo_usuario){
+                            $('#'+usuario+'').trigger("reset");
+                        }
+
                     }
                 });
-})
-
-$(document).on("submit",".formulario",function(e){
-//funcion para atrapar los formularios y enviar los datos
-
-    e.preventDefault();
-    $('html, body').animate({scrollTop: '0px'}, 200);
-
-    var formulario=$(this);
-    var equipo=$(this).attr("id");
-
-    if(equipo=="nuevo_equipo"){ var ruta="crear_equipo"; var nota="notificacion"; }
-
-    $("#"+nota+"").html($("#cargador").html());
-
-    $.ajax({
-
-        type: "POST",
-        url : ruta,
-        datatype:'json',
-        data : formulario.serialize(),
-        success : function(resultado){
-
-            $("#"+nota+"").html(resultado);
-            $('#'+equipo+'').trigger("reset");
-        }
-    });
 })
 
 //funcion para indicar correctamente la paginación

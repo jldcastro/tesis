@@ -24,9 +24,39 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
-                        <label for="marca_modelo">Marca/Modelo</label>
-                        <input type="text" class="form-control" id="marca_modelo" name="marca_modelo">
+                        <label for="nserie">N° de serie</label>
+                        <input type="text" class="form-control" id="nserie" name="nserie">
                         <span class="fa fa-barcode form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback col-md-12">
+                        <label for="cod_interno">Código Interno</label>
+                        <input type="text" class="form-control" id="cod_interno" name="cod_interno">
+                        <span class="fa fa-barcode form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback col-md-12">
+                        <label for="capacidad">Capacidad</label>
+                        <input type="text" class="form-control" id="capacidad" name="capacidad">
+                        <span class="fa fa-star-o form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback col-md-12">
+                        <label for="clase_oiml">Clase OIML</label>
+                        <input type="text" class="form-control" id="clase_oiml" name="clase_oiml">
+                        <span class="fa fa-star-o form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback col-md-12">
+                        <label for="error_max">Error máximo</label>
+                        <input type="text" class="form-control" id="error_max" name="error_max">
+                        <span class="fa fa-remove form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback col-md-12">
+                        <label for="lugar_almacenamiento">Lugar de almacenamiento</label>
+                        <input type="text" class="form-control" id="lugar_almacenamiento" name="lugar_almacenamiento">
+                        <span class="fa fa-map-marker form-control-feedback"></span>
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@
         if( count($usuarios) >0){
     ?>
 
-    <table id="tabla_pacientes" class="table table-bordered" cellspacing="0" width="100%">
+    <table id="tabla_usuarios" class="table table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th style="width:10px">Id</th>
@@ -31,9 +31,9 @@
                 <td><?= $usuario->rut_usuario; ?></td>
                 <td><?= $usuario->name; ?></td>
                 <td><?= $usuario->apellido_paterno; ?></td>
-                <td><button class=".btn  btn-success btn-xs" onclick="mostrarficha(<?= $usuario->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
-                    <button class=".btn  btn-warning btn-xs" onclick="mostrarficha(<?= $usuario->id; ?>);" ><i class="fa fa-fw fa-eye"></i> Detalles</button>
-                    <button class=".btn  btn-danger btn-xs" onclick="mostrarficha(<?= $usuario->id; ?>);" ><i class="fa fa-fw fa-remove"></i> Eliminar</button>
+                <td><button class=".btn  btn-success btn-xs" onclick="editar_usuario(<?= $usuario->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
+                    <button class=".btn  btn-warning btn-xs" onclick="mostrar_usuario(<?= $usuario->id; ?>);"><i class="fa fa-fw fa-eye"></i> Detalles</button>
+                    <button class=".btn  btn-danger btn-xs"><i class="fa fa-fw fa-remove"></i> Eliminar</button>
                 </td>
             </tr>
 

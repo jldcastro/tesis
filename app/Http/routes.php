@@ -24,11 +24,12 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 // Rutas usuarios
-Route::get('nuevo_usuario', 'FormulariosController@nuevo_usuario');
+Route::get('nuevo_usuario', 'UsuariosController@nuevo_usuario');
 Route::post('crear_usuario', 'UsuariosController@crear_usuario');
-Route::get('lista_usuarios/{page?}', 'ListasController@lista_usuarios');
-Route::get('actualizar_usuario/{id}', 'UsuariosController@actualizar_usuario');
+Route::get('lista_usuarios/{page?}', 'UsuariosController@lista_usuarios');
+Route::get('editar_usuario/{id}', 'UsuariosController@editar_usuario');
 Route::post('actualizar_usuario', 'UsuariosController@actualizar_usuario');
+Route::get('mostrar_usuario/{id}', 'UsuariosController@mostrar_usuario');
 
 //Rutas equipos
 Route::get('nuevo_equipo', 'FormulariosController@nuevo_equipo');

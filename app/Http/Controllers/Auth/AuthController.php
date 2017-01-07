@@ -37,7 +37,6 @@ class AuthController extends Controller
     {
         $this->auth = $auth;
         $this->middleware('guest', ['except' => 'getLogout']);
-      
     }
 
     /**
@@ -46,27 +45,20 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-   
-
 
 //login
 
-       protected function getLogin()
+    protected function getLogin()
     {
         return view("login");
     }
 
-
-       
-
-        public function postLogin(Request $request)
-   {
-    $this->validate($request, [
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
         'rut_usuario' => 'required',
         'password' => 'required',
     ]);
-
-
 
     $credentials = $request->only('rut_usuario', 'password');
 
@@ -79,65 +71,4 @@ class AuthController extends Controller
        return Redirect::to('/login');
 
     }
-
-
-//login
-
- //registro   
-
-
-        protected function getRegister()
-    {
-        return view("registro");
-    }
-
-
-        
-
-        protected function postRegister(Request $request)
-
-   {
-    $this->validate($request, [
-        'name' => 'required',
-        'rut_usuario' => 'required',
-        'password' => 'required',
-    ]);
-
-
-    $data = $request;
-
-
-    $user=new User;
-    $user->name=$data['name'];
-    $user->rut_usuario=$data['rut_usuario'];
-    $user->password=bcrypt($data['password']);
-
-
-    if($user->save()){
-
-         return "se ha registrado correctamente el usuario";
-               
-    }
-   
-
-   
-
-}
-
-//registro
-
-protected function getLogout()
-    {
-        $this->auth->logout();
-
-        Session::flush();
-
-        return redirect('login');
-    }
-
-
-
-
-
-
 }
