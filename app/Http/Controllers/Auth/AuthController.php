@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Session;
 use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
@@ -64,7 +64,8 @@ class AuthController extends Controller
 
     if ($this->auth->attempt($credentials, $request->has('remember')))
     {
-        return view("home");
+        $usuarioactual=\Auth::user();
+        return view("home")->with("usuario",  $usuarioactual);;
     }
 
        return 'El rut y/o contraseña no son válidos';

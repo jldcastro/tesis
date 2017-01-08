@@ -30,6 +30,8 @@ Route::get('lista_usuarios/{page?}', 'UsuariosController@lista_usuarios');
 Route::get('editar_usuario/{id}', 'UsuariosController@editar_usuario');
 Route::post('actualizar_usuario', 'UsuariosController@actualizar_usuario');
 Route::get('mostrar_usuario/{id}', 'UsuariosController@mostrar_usuario');
+Route::post('imagen_usuario', 'UsuariosController@imagen_usuario');
+Route::post('cambiar_contrasena', 'UsuariosController@cambiar_contrasena');
 
 //Rutas equipos
 Route::get('nuevo_equipo', 'FormulariosController@nuevo_equipo');

@@ -30,33 +30,27 @@ function lista_usuarios(lista){
 
 function editar_usuario(id_usuario) {
 //funcion para mostrar y actualizar la informacion de un usuario
-    $("#capa_modal").show();
-    $("#capa_para_edicion").show();
+
     var ruta = "editar_usuario/"+id_usuario+"";
-    $("#capa_para_edicion").html($("#cargador").html());
+
+    $("#contenido_principal").html($("#cargador").html());
+
     $.get(ruta,function(resultado){
-        $("#capa_para_edicion").html(resultado);
+        $("#contenido_principal").html(resultado);
     })
 }
 
 function mostrar_usuario(id_usuario) {
 //funcion para mostrar y actualizar la informacion de un usuario
-    $("#capa_modal").show();
-    $("#capa_para_edicion").show();
+
     var ruta = "mostrar_usuario/"+id_usuario+"";
-    $("#capa_para_edicion").html($("#cargador").html());
+
+    $("#contenido_principal").html($("#cargador").html());
+
     $.get(ruta,function(resultado){
-        $("#capa_para_edicion").html(resultado);
+        $("#contenido_principal").html(resultado);
     })
 }
-
-$(document).on("click",".div_modal",function(e){
-//funcion para ocultar las capas modales
-    $("#capa_modal").hide();
-    $("#capa_para_edicion").hide();
-    $("#capa_para_edicion").html("");
-
-})
 
  $(document).on("submit",".formulario",function(e){
 //funcion para atrapar el formulario de usuarios y enviar los datos
@@ -70,8 +64,10 @@ $(document).on("click",".div_modal",function(e){
         if(usuario=="nuevo_usuario"){ var ruta="crear_usuario"; var nota="notificacion"; }
 
         if(usuario=="editar_usuario"){ var ruta="actualizar_usuario"; var nota="notificacion"; }
-   
-        $("#"+nota+"").html($("#cargador").html());
+
+        if(usuario=="cambiar_contrasena"){ var ruta="cambiar_contrasena"; var nota="notificacion_contrasena"; }
+
+     $("#"+nota+"").html($("#cargador").html());
 
               $.ajax({
 
@@ -104,3 +100,44 @@ $(document).on("click",".pagination li a",function(e){
         $("#contenido_principal").html(resultado);
     })
 })
+
+$(document).on("submit",".imagenes",function(e){
+
+
+    e.preventDefault();
+    var formu=$(this);
+    var nombreform=$(this).attr("id");
+
+    if(nombreform=="subir_imagen" ){ var ruta="imagen_usuario";  var nota="notificacion_imagen"}
+    //información del formulario
+    var formData = new FormData($("#"+nombreform+"")[0]);
+
+    //hacemos la petición ajax
+    $.ajax({
+        url: ruta,
+        type: 'POST',
+
+        // Form data
+        //datos del formulario
+        data: formData,
+        //necesario para subir archivos via ajax
+        cache: false,
+        contentType: false,
+        processData: false,
+        //mientras enviamos el archivo
+        beforeSend: function(){
+            $("#"+nota+"").html($("#cargador").html());
+        },
+        //una vez finalizado correctamente
+        success: function(data){
+            $("#"+nota+"").html(data);
+            $("#foto").attr('src', $("#foto").attr('src') + '?' + Math.random() );
+        },
+        //si ha ocurrido un error
+        error: function(data){
+            alert("Ha ocurrido un error") ;
+
+        }
+    });
+});
+

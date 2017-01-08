@@ -33,7 +33,6 @@
         <link href='imagenes/empresa/molinstec.ico' rel='shortcut icon' type='image/x-icon'>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <link rel="stylesheet" href="css/sistema-calibracion.css">
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -62,13 +61,14 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="plnatilla/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Usuario Admin</span>
+                                    <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.jpg"; }  ?>
+                                    <img src="<?=  $usuario->foto;  ?>"  alt="User Image"  style="width:20px;height:20px;">
+                                    <span class="hidden-xs"><?=  $usuario->name;  ?> <?=  $usuario->apellido_paterno;  ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        <img src="<?=  $usuario->foto;  ?>"  alt="User Image"  style="width:50px;height:50px;">
                                         <p>
                                             Usuario Admin
                                             <small>Member since Nov. 2012</small>
@@ -108,10 +108,11 @@
                 <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.jpg"; }  ?>
+                            <img src="<?=  $usuario->foto;  ?>"  alt="User Image"  style="width:50px;height:50px;">
                         </div>
                         <div class="pull-left info">
-                            <p>Usuario:Admin</p>
+                            <p>Usuario: <?=  $usuario->name;  ?> <?=  $usuario->apellido_paterno;  ?></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
@@ -149,6 +150,15 @@
                                 <li class="active"><a href="#"><i class="fa fa-briefcase"></i>Formulario F-18</a></li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-excel-o"></i> <span>Solicitud cotización</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-file-excel-o"></i>Formulario F-37</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
             <!-- /.sidebar -->
@@ -160,11 +170,6 @@
                     <h1>
                         Bienvenido al sistema de calibración de masas y balanzas de la empresa MOLINSTEC
                     </h1>
-                </section>
-
-                <section>
-                    <div id="capa_modal" class="div_modal" ></div>
-                    <div id="capa_para_edicion" class="div_contenido" ><div>
                 </section>
 
                 <!-- Main content -->

@@ -1,7 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\User;
-use Request;
+use Storage;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller {
 
@@ -29,7 +32,7 @@ class UsuariosController extends Controller {
     //presenta el formulario para nuevo usuario
     public function nuevo_usuario()
     {
-        return view('formularios.nuevo_usuario');
+        return view('formularios.usuarios.nuevo_usuario');
     }
 
     //presenta la lista y paginación de usuarios
@@ -40,10 +43,10 @@ class UsuariosController extends Controller {
     }
 
     //Formulario para nuevo usuario
-	public function crear_usuario()
+	public function crear_usuario(Request $request)
 	{
 
-		$data=Request::all();
+		$data=$request::all();
 
 		$usuario= new User;
 		$usuario->name=$data["name"];
@@ -72,7 +75,7 @@ class UsuariosController extends Controller {
         $usuario=User::find($id);
         $contador=count($usuario);
         if($contador>0){
-            return view("formularios.editar_usuario")->with("usuario",$usuario);
+            return view("formularios.usuarios.editar_usuario")->with("usuario",$usuario);
         }
         else
         {
@@ -80,10 +83,10 @@ class UsuariosController extends Controller {
         }
     }
 
-    public function actualizar_usuario()
+    public function actualizar_usuario(Request $request)
     {
 
-        $data=Request::all();
+        $data=$request::all();
         $idUsuario=$data["id_usuario"];
         $usuario=User::find($idUsuario);
         $usuario->name=$data["name"];
@@ -111,11 +114,67 @@ class UsuariosController extends Controller {
         $usuario=User::find($id);
         $contador=count($usuario);
         if($contador>0){
-            return view("formularios.mostrar_usuario")->with("usuario",$usuario);
+            return view("formularios.usuarios.mostrar_usuario")->with("usuario",$usuario);
         }
         else
         {
             return view("mensajes.incorrecto")->with("mensaje","El usuario no existe o fue borrado");
+        }
+    }
+
+    public function imagen_usuario(Request $request)
+    {
+
+        $id=$request->input('usuario_foto');
+        $archivo = $request->file('archivo');
+        $input  = array('image' => $archivo) ;
+        $reglas = array('image' => 'required|image|mimes:jpeg,jpg,bmp,png,gif|max:2000');
+        $validacion = Validator::make($input,  $reglas);
+        if ($validacion->fails())
+        {
+            return view("mensajes.incorrecto")->with("mensaje","El archivo no es una imagen válida");
+        }
+        else
+        {
+
+            $nombre_original=$archivo->getClientOriginalName();
+            $extension=$archivo->getClientOriginalExtension();
+            $nuevo_nombre="usuario-".$id.".".$extension;
+            $r1=Storage::disk('fotousuarios')->put($nuevo_nombre,  \File::get($archivo) );
+            $ruta="imagenes/usuarios/".$nuevo_nombre;
+
+            if ($r1){
+
+                $usuario=User::find($id);
+                $usuario->foto=$ruta;
+                $r2=$usuario->save();
+                return view("mensajes.correcto")->with("mensaje","Imagen de perfil agregada correctamente");
+            }
+            else
+            {
+
+
+            }
+        }
+    }
+
+    public function cambiar_contrasena(Request $request)
+    {
+
+        $id=$request->input("usuario_contrasena");
+        $email=$request->input("email_usuario");
+        $password=$request->input("password_usuario");
+        $usuario=User::find($id);
+        $usuario->email=$email;
+        $usuario->password=bcrypt($password);
+        $r=$usuario->save();
+
+        if($r){
+            return view("mensajes.correcto")->with("mensaje","La contraseña fue actualizada");
+        }
+        else
+        {
+            return view("mensajes.incorrecto")->with("mensaje","Error al actualizar la contraseña");
         }
     }
 }

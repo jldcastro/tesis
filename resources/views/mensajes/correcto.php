@@ -1,4 +1,4 @@
-<div class="form-group has-feedback col-md-3">
+<div class="form-group has-feedback col-md-12">
     <div class="alert alert-success">
         <?php  echo $mensaje; ?>
     </div>
