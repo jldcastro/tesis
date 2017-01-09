@@ -10,7 +10,7 @@
         if( count($equipos) >0){
             ?>
 
-            <table id="tabla_pacientes" class="table table-bordered" cellspacing="0" width="100%">
+            <table id="tabla_equipos" class="table table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th style="width:10px">Id</th>
@@ -57,7 +57,7 @@
     </div>
 </div>
 <div class="form-group has-feedback">
-    <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="form_equipo(1);" style="color: #ffffff"> Agregar Equipo</a></button>
+    <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="agregar(2);" style="color: #ffffff"> Agregar Equipo</a></button>
 </div>
 
 

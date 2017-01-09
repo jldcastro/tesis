@@ -12,6 +12,25 @@ class EquiposController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    //presenta el formulario para nuevo equipo
+    public function nuevo_equipo()
+    {
+        return view('formularios.f4.nuevo_equipo');
+    }
+
+    //presenta la lista y paginación de usuarios
+    public function lista_equipos()
+    {
+        $equipos= Equipo::paginate(10);
+        return view('formularios.f4.lista_equipos')->with("equipos", $equipos );
+    }
+
     //Formulario para nuevo usuario
     public function crear_equipo()
     {

@@ -61,7 +61,7 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.jpg"; }  ?>
+                                    <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.png"; }  ?>
                                     <img src="<?=  $usuario->foto;  ?>"  alt="User Image"  style="width:20px;height:20px;">
                                     <span class="hidden-xs"><?=  $usuario->name;  ?> <?=  $usuario->apellido_paterno;  ?></span>
                                 </a>
@@ -108,11 +108,11 @@
                 <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.jpg"; }  ?>
+                            <?php if($usuario->foto==""){ $usuario->foto="imagenes/usuarios/perfil.png"; }  ?>
                             <img src="<?=  $usuario->foto;  ?>"  alt="User Image"  style="width:50px;height:50px;">
                         </div>
                         <div class="pull-left info">
-                            <p>Usuario: <?=  $usuario->name;  ?> <?=  $usuario->apellido_paterno;  ?></p>
+                            <p>Usuario: <?=  $usuario->name;  ?></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="javascript:void(0);" onclick="lista_usuarios(1);"><i class="fa fa-list"></i>Lista Usuarios</a></li>
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(1);"><i class="fa fa-list"></i>Lista Usuarios</a></li>
                                 <li><a href="#"><i class="fa fa-lock"></i>Permisos Usuarios</a></li>
                             </ul>
                         </li>
@@ -145,7 +145,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="javascript:void(0);" onclick="lista_equipos(1);"><i class="fa fa-briefcase"></i>Formulario F-4</a></li>
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(2);"><i class="fa fa-briefcase"></i>Formulario F-4</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-briefcase"></i>Formulario F-5</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-briefcase"></i>Formulario F-18</a></li>
                             </ul>

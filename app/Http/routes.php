@@ -32,8 +32,12 @@ Route::post('actualizar_usuario', 'UsuariosController@actualizar_usuario');
 Route::get('mostrar_usuario/{id}', 'UsuariosController@mostrar_usuario');
 Route::post('imagen_usuario', 'UsuariosController@imagen_usuario');
 Route::post('cambiar_contrasena', 'UsuariosController@cambiar_contrasena');
+Route::post('eliminar_usuario', 'UsuariosController@eliminar_usuario');
 
 //Rutas equipos
-Route::get('nuevo_equipo', 'FormulariosController@nuevo_equipo');
+Route::get('nuevo_equipo', 'EquiposController@nuevo_equipo');
 Route::post('crear_equipo', 'EquiposController@crear_equipo');
-Route::get('lista_equipos/{page?}', 'ListasController@lista_equipos');
+Route::get('lista_equipos/{page?}', 'EquiposController@lista_equipos');
+
+//Rutas cotización
+Route::get('solicitud','CotizacionController@cotizacion');

@@ -147,6 +147,7 @@ return [
 
         //Provider paquete para rut chileno
         Freshwork\ChileanBundle\Laravel\ChileanBundleServiceProvider::class,
+        //Provider paquete para excel
 
     ],
 
@@ -196,7 +197,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Rut'       => Freshwork\ChileanBundle\Laravel\Facades\Rut::class,
-
     ],
 
 ];

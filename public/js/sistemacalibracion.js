@@ -1,10 +1,8 @@
-function form_usuario(argumento){
+function agregar(argumento){
 //funcion para cargar formularios del sistema
 
-		if(argumento==1)
-            {
-                var ruta = "nuevo_usuario";
-            }
+		if(argumento==1){var ruta = "nuevo_usuario";}
+        if(argumento==2){var ruta = "nuevo_equipo";}
 
 		$("#contenido_principal").html($("#cargador").html());
 		   
@@ -13,13 +11,11 @@ function form_usuario(argumento){
 		    })
 }
 
-function lista_usuarios(lista){
+function listas(lista){
 //funcion para cargar el listado de usuarios
 
-        if(lista==1)
-            {
-                var ruta = "lista_usuarios";
-            }
+        if(lista==1){var ruta = "lista_usuarios";}
+        if(lista==2){var ruta = "lista_equipos";}
 
         $("#contenido_principal").html($("#cargador").html());
 

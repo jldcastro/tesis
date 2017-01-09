@@ -2,9 +2,11 @@
 
 use App\User;
 use Storage;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Request;
+
 
 class UsuariosController extends Controller {
 
@@ -39,7 +41,7 @@ class UsuariosController extends Controller {
     public function lista_usuarios()
     {
         $usuarios= User::paginate(10);
-        return view('listas.lista_usuarios')->with("usuarios", $usuarios );
+        return view('formularios.usuarios.lista_usuarios')->with("usuarios", $usuarios );
     }
 
     //Formulario para nuevo usuario
@@ -125,8 +127,8 @@ class UsuariosController extends Controller {
     public function imagen_usuario(Request $request)
     {
 
-        $id=$request->input('usuario_foto');
-        $archivo = $request->file('archivo');
+        $id=$request::input('usuario_foto');
+        $archivo = $request::file('archivo');
         $input  = array('image' => $archivo) ;
         $reglas = array('image' => 'required|image|mimes:jpeg,jpg,bmp,png,gif|max:2000');
         $validacion = Validator::make($input,  $reglas);
@@ -175,6 +177,31 @@ class UsuariosController extends Controller {
         else
         {
             return view("mensajes.incorrecto")->with("mensaje","Error al actualizar la contraseña");
+        }
+    }
+
+    public function eliminar_usuario(Request $request)
+    {
+
+        $data=$request::all();
+        $idUsuario=$data["id_usuario"];
+        $usuario=User::find($idUsuario);
+        $usuario->name=$data["name"];
+        $usuario->email=$data["email"];
+        $usuario->apellido_paterno=$data["apellido_paterno"];
+        $usuario->apellido_materno=$data["apellido_materno"];
+
+        $resultado= $usuario->save();
+
+        if($resultado){
+
+            return view("mensajes.correcto")->with("mensaje","Los datos del usuario fueron actualizados exitósamente");
+        }
+        else
+        {
+
+            return view("mensajes.incorrecto")->with("mensaje","Hubo un error vuelva a intentarlo");
+
         }
     }
 }

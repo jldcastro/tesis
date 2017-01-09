@@ -33,7 +33,7 @@
                 <td><?= $usuario->apellido_paterno; ?></td>
                 <td><button class=".btn  btn-success btn-xs" onclick="editar_usuario(<?= $usuario->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
                     <button class=".btn  btn-warning btn-xs" onclick="mostrar_usuario(<?= $usuario->id; ?>);"><i class="fa fa-fw fa-eye"></i> Detalles</button>
-                    <button class=".btn  btn-danger btn-xs"><i class="fa fa-fw fa-remove"></i> Eliminar</button>
+                    <button class=".btn  btn-danger btn-xs" onclick="eliminar_usuario(<?= $usuario->id; ?>);"><i class="fa fa-fw fa-remove"></i> Eliminar</button>
                 </td>
             </tr>
 
@@ -59,7 +59,7 @@
 </div>
 </div>
     <div class="form-group has-feedback">
-        <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="form_usuario(1);" style="color: #ffffff"> Agregar Usuario</a></button>
+        <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="agregar(1);" style="color: #ffffff"> Agregar Usuario</a></button>
     </div>
 
 
