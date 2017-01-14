@@ -1,11 +1,9 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Información Personal Usuario</h3>
             </div><!-- /.box-header -->
-
-            <div id="notificacion"></div>
 
             <form  id="mostrar_usuario" class="form-horizontal formulario" role="form">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">

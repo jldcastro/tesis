@@ -36,10 +36,29 @@ function editar_usuario(id_usuario) {
     })
 }
 
+$(document).on("click",".div_modal",function(e){
+    //funcion para ocultar las capas modales
+    $("#capa_modal").hide();
+    $("#capa_para_edicion").hide();
+    $("#capa_para_edicion").html("");
+})
+
 function mostrar_usuario(id_usuario) {
 //funcion para mostrar y actualizar la informacion de un usuario
 
     var ruta = "mostrar_usuario/"+id_usuario+"";
+
+    $("#contenido_principal").html($("#cargador").html());
+
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+}
+
+function mostrar_equipo(id_equipo) {
+//funcion para mostrar y actualizar la informacion de un usuario
+
+    var ruta = "mostrar_equipo/"+id_equipo+"";
 
     $("#contenido_principal").html($("#cargador").html());
 
@@ -56,8 +75,10 @@ function mostrar_usuario(id_usuario) {
         
         var formulario=$(this);
         var usuario=$(this).attr("id");
+        var equipo=$(this).attr("id");
         
         if(usuario=="nuevo_usuario"){ var ruta="crear_usuario"; var nota="notificacion"; }
+        if(equipo=="nuevo_equipo"){ var ruta="crear_equipo"; var nota="notificacion"; }
 
         if(usuario=="editar_usuario"){ var ruta="actualizar_usuario"; var nota="notificacion"; }
 
@@ -76,6 +97,10 @@ function mostrar_usuario(id_usuario) {
                         $("#"+nota+"").html(resultado);
                         if(usuario==nuevo_usuario){
                             $('#'+usuario+'').trigger("reset");
+                        }
+
+                        if(equipo==nuevo_equipo){
+                            $('#'+equipo+'').trigger("reset");
                         }
 
                     }
@@ -136,4 +161,6 @@ $(document).on("submit",".imagenes",function(e){
         }
     });
 });
+
+
 

@@ -34,6 +34,7 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
+        <link rel="stylesheet" href="css/sistemacalibracion.css">
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
@@ -145,9 +146,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active"><a href="javascript:void(0);" onclick="listas(2);"><i class="fa fa-briefcase"></i>Formulario F-4</a></li>
-                                <li class="active"><a href="#"><i class="fa fa-briefcase"></i>Formulario F-5</a></li>
-                                <li class="active"><a href="#"><i class="fa fa-briefcase"></i>Formulario F-18</a></li>
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(2);"><i class="fa fa-file-word-o"></i>Formulario F-4</a></li>
+                                <li class="active"><a href="#"><i class="fa fa-file-word-o"></i>Formulario F-5</a></li>
+                                <li class="active"><a href="#"><i class="fa fa-file-word-o"></i>Formulario F-18</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -170,6 +171,11 @@
                     <h1>
                         Bienvenido al sistema de calibración de masas y balanzas de la empresa MOLINSTEC
                     </h1>
+                </section>
+
+                <section>
+                    <div id="capa_modal" class="div_modal" ></div>
+                    <div id="capa_para_edicion" class="div_contenido" > </div>
                 </section>
 
                 <!-- Main content -->

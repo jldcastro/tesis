@@ -20,7 +20,7 @@ class CreateEquiposTable extends Migration
             $table->string('cod_interno');
             $table->string('capacidad');
             $table->string('clase_oiml');
-            $table->string('error_max');
+            $table->float('error_max');
             $table->string('lugar_almacenamiento');
             $table->date('fcompra');
             $table->string('norden_compra');
