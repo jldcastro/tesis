@@ -38,6 +38,8 @@ Route::post('eliminar_usuario', 'UsuariosController@eliminar_usuario');
 Route::get('nuevo_equipo', 'EquiposController@nuevo_equipo');
 Route::post('crear_equipo', 'EquiposController@crear_equipo');
 Route::get('lista_equipos/{page?}', 'EquiposController@lista_equipos');
+Route::get('editar_equipo/{id}', 'EquiposController@editar_equipo');
+Route::post('actualizar_equipo', 'EquiposController@actualizar_equipo');
 Route::get('mostrar_equipo/{id}', 'EquiposController@mostrar_equipo');
 
 
