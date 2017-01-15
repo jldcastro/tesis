@@ -151,4 +151,19 @@ class EquiposController extends Controller
             return view("mensajes.incorrecto")->with("mensaje","El equipo no existe o fue borrado");
         }
     }
+
+    public function eliminar_equipo($id)
+    {
+
+        $equipo = Equipo::find($id);
+        $resultado = $equipo->delete();
+
+        if ($resultado) {
+            return view("mensajes.correcto")->with("mensaje", "Usuario eliminado exitósamente");
+        } else {
+            return view("mensajes.incorrecto")->with("mensaje", "Hubo un error vuelva a intentarlo");
+        }
+
+
+    }
 }

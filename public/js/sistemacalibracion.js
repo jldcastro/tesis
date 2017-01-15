@@ -175,5 +175,29 @@ $(document).on("submit",".imagenes",function(e){
     });
 });
 
+function eliminar_usuario(argumento) {
+
+    var ruta = "eliminar_usuario/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(1);
+    })
+}
+
+function eliminar_equipo(argumento) {
+
+    var ruta = "eliminar_equipo/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(2);
+    })
+}
+
 
 

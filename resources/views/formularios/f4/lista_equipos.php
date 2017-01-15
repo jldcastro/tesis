@@ -30,7 +30,7 @@
                         <td><?= $equipo->marca_modelo; ?></td>
                         <td><button class=".btn  btn-success btn-xs" onclick="editar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
                             <button class=".btn  btn-warning btn-xs" onclick="mostrar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-eye"></i> Detalles</button>
-                            <button class=".btn  btn-danger btn-xs" onclick="mostrarficha(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-remove"></i> Eliminar</button>
+                            <button class=".btn  btn-danger btn-xs" onclick="eliminar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-remove"></i> Eliminar</button>
                             <button class=".btn  bg-navy btn-xs" onclick="mostrarficha(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-file-word-o"></i> Descargar Word</button>
                         </td>
                     </tr>
