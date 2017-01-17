@@ -14,7 +14,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "freshwork/chilean-bundle": "^2.0",
-        "phpoffice/phpexcel": "dev-master"
+        "phpoffice/phpexcel": "dev-master",
+        "phpoffice/phpword": "v0.13.*"
 },
     "autoload": {
         "classmap": [

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Equipo;
 use Request;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class EquiposController extends Controller
 {
@@ -163,7 +164,41 @@ class EquiposController extends Controller
         } else {
             return view("mensajes.incorrecto")->with("mensaje", "Hubo un error vuelva a intentarlo");
         }
+    }
 
+    public function descargar_word($id)
+    {
+        $templateWord = new TemplateProcessor('word/F4 - Hoja de vida de equipos.docx');
 
+        $resultado = Equipo::find($id);
+
+        $templateWord->setValue('equipo', $resultado->equipo);
+        $templateWord->setValue('marca_modelo', $resultado->marca_modelo);
+        $templateWord->setValue('nserie', $resultado->nserie);
+        $templateWord->setValue('cod_interno', $resultado->cod_interno);
+        $templateWord->setValue('capacidad', $resultado->capacidad);
+        $templateWord->setValue('clase_oiml', $resultado->clase_oiml);
+        $templateWord->setValue('error_max', $resultado->error_max);
+        $templateWord->setValue('lugar_almacenamiento', $resultado->lugar_almacenamiento);
+        $templateWord->setValue('fcompra', $resultado->fcompra);
+        $templateWord->setValue('norden_compra', $resultado->norden_compra);
+        $templateWord->setValue('proveedor', $resultado->proveedor);
+        $templateWord->setValue('intervalo_mantenimiento', $resultado->intervalo_mantenimiento);
+        $templateWord->setValue('fecha_mantenimiento', $resultado->fecha_mantenimiento);
+        $templateWord->setValue('avisar', $resultado->avisar);
+        $templateWord->setValue('pauta_mantencion', $resultado->pauta_mantencion);
+        $templateWord->setValue('intervalo_calibracion', $resultado->intervalo_calibracion);
+        $templateWord->setValue('intervalo_verificacion', $resultado->intervalo_verificacion);
+        $templateWord->setValue('criterio_aceptacion', $resultado->criterio_aceptacion);
+        $templateWord->setValue('observaciones', $resultado->observaciones);
+        $templateWord->setValue('actividad', $resultado->actividad);
+        $templateWord->setValue('f_realizacion', $resultado->f_realizacion);
+        $templateWord->setValue('f_proxima', $resultado->f_proxima);
+        $templateWord->setValue('realizado_por', $resultado->realizado_por);
+        $templateWord->setValue('ncertificado', $resultado->ncertificado);
+        $templateWord->setValue('observacion', $resultado->observacion);
+
+        $templateWord->saveAs('word/f4/equipo'.$id.'.docx');
+        header("Content-Disposition: attachment; filename=equipo" .$id . ".docx; charset=iso-8859-1");
     }
 }
