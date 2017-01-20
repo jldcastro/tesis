@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Equipo;
+use Storage;
 use Request;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Validator;
 
 class EquiposController extends Controller
 {
@@ -163,6 +165,37 @@ class EquiposController extends Controller
             return view("mensajes.correcto")->with("mensaje", "Usuario eliminado exitósamente");
         } else {
             return view("mensajes.incorrecto")->with("mensaje", "Hubo un error vuelva a intentarlo");
+        }
+    }
+
+    public function imagen_equipo(Request $request)
+    {
+
+        $id = $request::input('equipo_foto');
+        $archivo = $request::file('archivo');
+        $input = array('image' => $archivo);
+        $reglas = array('image' => 'required|image|mimes:jpeg,jpg,bmp,png,gif|max:2000');
+        $validacion = Validator::make($input, $reglas);
+        if ($validacion->fails()) {
+            return view("mensajes.incorrecto")->with("mensaje", "El archivo no es una imagen válida");
+        } else {
+
+            $nombre_original = $archivo->getClientOriginalName();
+            $extension = $archivo->getClientOriginalExtension();
+            $nuevo_nombre = "equipo-" . $id . "." . $extension;
+            $r1 = Storage::disk('fotoequipos')->put($nuevo_nombre, \File::get($archivo));
+            $ruta = "imagenes/f4/" . $nuevo_nombre;
+
+            if ($r1) {
+
+                $equipo = Equipo::find($id);
+                $equipo->foto = $ruta;
+                $r2 = $equipo->save();
+                return view("mensajes.correcto")->with("mensaje", "Imagen de equipo agregada correctamente");
+            } else {
+
+
+            }
         }
     }
 

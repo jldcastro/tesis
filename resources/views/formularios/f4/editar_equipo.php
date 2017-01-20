@@ -170,4 +170,36 @@
             </form>
         </div>
     </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Cambiar Imagen Equipo</h3>
+            </div><!-- /.box-header -->
+
+            <div id="notificacion_imagen"></div>
+
+            <form  id="subir_equipo" name="subir_equipo" method="post"  action="imagen_equipo" class="imagenes" enctype="multipart/form-data" >
+                <input type="hidden" name="equipo_foto" value="<?= $equipo->id; ?>">
+                <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>">
+                <div class="box-body">
+
+                    <div class="form-group col-xs-12" >
+                        <?php if($equipo->foto==""){ $equipo->foto="imagenes/f4/termometro.jpg"; }?>
+                        <img src="<?=  $equipo->foto;  ?>"  alt="User Image"  style="width:160px;height:160px;" id="foto" >
+                        <!-- User image -->
+                    </div>
+
+                    <div class="form-group col-xs-12"  >
+                        <label>Agregar Imagen Equipo</label>
+                        <input name="archivo" id="archivo" type="file"   class="archivo form-control"  required/><br /><br />
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class=".btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>    <!-- end col mod 6 -->
 </div>

@@ -39,6 +39,7 @@ class CreateEquiposTable extends Migration
             $table->string('realizado_por');
             $table->string('ncertificado');
             $table->mediumText('observacion');
+            $table->string('foto');
             $table->timestamps();
         });
     }

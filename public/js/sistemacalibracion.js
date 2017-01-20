@@ -143,6 +143,7 @@ $(document).on("submit",".imagenes",function(e){
     var nombreform=$(this).attr("id");
 
     if(nombreform=="subir_imagen" ){ var ruta="imagen_usuario";  var nota="notificacion_imagen"}
+    if(nombreform=="subir_equipo" ){ var ruta="imagen_equipo";  var nota="notificacion_imagen"}
     //información del formulario
     var formData = new FormData($("#"+nombreform+"")[0]);
 
@@ -208,7 +209,7 @@ function descargar_word(id) {
 
     $.get(ruta,function(resultado){
         $("#contenido_principal").html(resultado);
-        //listas(2);
+        listas(2);
     })
 }
 

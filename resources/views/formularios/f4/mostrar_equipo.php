@@ -10,6 +10,13 @@
                 <input type="hidden" name="id_equipo" value="<?= $equipo->id; ?>">
 
                 <div class="box-body">
+
+                    <div class = "form-group has-feedback col-md-12">
+                        <label>Imagen equipo</label>
+                        <br>
+                        <img src="<?= $equipo->foto ?>" width="500px">
+                    </div>
+
                     <div class="form-group has-feedback col-md-12">
                         <label for="equipo">Equipo</label>
                         <input type="text" class="form-control" id="equipo" name="equipo" value="<?= $equipo->equipo; ?>" disabled>

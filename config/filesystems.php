@@ -53,6 +53,11 @@ return [
             'root'   => public_path('imagenes/usuarios'),
         ],
 
+        'fotoequipos' => [
+            'driver' => 'local',
+            'root'   => public_path('imagenes/f4'),
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
