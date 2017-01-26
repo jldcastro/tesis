@@ -12,15 +12,21 @@
 
                 <div class="box-body">
                     <div class="form-group has-feedback col-md-12">
-                        <label for="equipo">Equipo</label>
-                        <input type="text" class="form-control" id="equipo" name="equipo">
-                        <span class="fa fa-briefcase form-control-feedback"></span>
+                        <label for="id_nombre">Equipo</label>
+                        <select id="id_nombre" name="id_nombre" class="form-control">
+                            <?php foreach($nombres as $nombre){ ?>
+                                <option value="<?= $nombre->id; ?>"><?= $nombre->equipo; ?> </option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
-                        <label for="marca_modelo">Marca/Modelo</label>
-                        <input type="text" class="form-control" id="marca_modelo" name="marca_modelo">
-                        <span class="fa fa-barcode form-control-feedback"></span>
+                        <label for="id_marca">Marca/Modelo</label>
+                        <select id="id_marca" name="id_marca" class="form-control">
+                            <?php foreach($marcas as $marca){ ?>
+                                <option value="<?= $marca->id; ?>"><?= $marca->marca_modelo; ?> </option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
@@ -54,9 +60,12 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
-                        <label for="lugar_almacenamiento">Lugar de almacenamiento</label>
-                        <input type="text" class="form-control" id="lugar_almacenamiento" name="lugar_almacenamiento">
-                        <span class="fa fa-map-marker form-control-feedback"></span>
+                        <label for="id_ubicacion">Lugar de almacenamiento</label>
+                        <select id="id_ubicacion" name="id_ubicacion" class="form-control">
+                            <?php foreach($ubicaciones as $ubicacion){ ?>
+                                <option value="<?= $ubicacion->id; ?>"><?= $ubicacion->lugar_almacenamiento; ?> </option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback col-md-12">

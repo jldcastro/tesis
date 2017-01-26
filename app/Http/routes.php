@@ -34,6 +34,30 @@ Route::post('imagen_usuario', 'UsuariosController@imagen_usuario');
 Route::post('cambiar_contrasena', 'UsuariosController@cambiar_contrasena');
 Route::get('eliminar_usuario/{id}', 'UsuariosController@eliminar_usuario');
 
+//Rutas mantenedores nombres
+Route::get('nuevo_nombre', 'NombresController@nuevo_nombre');
+Route::post('crear_nombre', 'NombresController@crear_nombre');
+Route::get('lista_nombres/{page?}', 'NombresController@lista_nombres');
+Route::get('editar_nombre/{id}', 'NombresController@editar_nombre');
+Route::post('actualizar_nombre', 'NombresController@actualizar_nombre');
+Route::get('eliminar_nombre/{id}', 'NombresController@eliminar_nombre');
+
+//Rutas mantenedores marcas
+Route::get('nueva_marca', 'MarcasController@nueva_marca');
+Route::post('crear_marca', 'MarcasController@crear_marca');
+Route::get('lista_marcas/{page?}', 'MarcasController@lista_marcas');
+Route::get('editar_marca/{id}', 'MarcasController@editar_marca');
+Route::post('actualizar_marca', 'MarcasController@actualizar_marca');
+Route::get('eliminar_marca/{id}', 'MarcasController@eliminar_marca');
+
+//Rutas mantenedores ubicaciones
+Route::get('nueva_ubicacion', 'UbicacionesController@nueva_ubicacion');
+Route::post('crear_ubicacion', 'UbicacionesController@crear_ubicacion');
+Route::get('lista_ubicaciones/{page?}', 'UbicacionesController@lista_ubicaciones');
+Route::get('editar_ubicacion/{id}', 'UbicacionesController@editar_ubicacion');
+Route::post('actualizar_ubicacion', 'UbicacionesController@actualizar_ubicacion');
+Route::get('eliminar_ubicacion/{id}', 'UbicacionesController@eliminar_ubicacion');
+
 //Rutas equipos
 Route::get('nuevo_equipo', 'EquiposController@nuevo_equipo');
 Route::post('crear_equipo', 'EquiposController@crear_equipo');

@@ -26,8 +26,8 @@
 
                     <tr role="row" class="odd">
                         <td class="sorting_1"><?= $equipo->id; ?></td>
-                        <td><?= $equipo->equipo; ?></td>
-                        <td><?= $equipo->marca_modelo; ?></td>
+                        <td><?= $equipo->nombre->equipo; ?></td>
+                        <td><?= $equipo->marca->marca_modelo; ?></td>
                         <td><button class=".btn  btn-success btn-xs" onclick="editar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
                             <button class=".btn  btn-warning btn-xs" onclick="mostrar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-eye"></i> Detalles</button>
                             <button class=".btn  btn-danger btn-xs" onclick="eliminar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-remove"></i> Eliminar</button>

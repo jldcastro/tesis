@@ -14,14 +14,17 @@ class CreateEquiposTable extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('equipo');
-            $table->string('marca_modelo');
+            $table->integer('idNombre')->unsigned()->nullable();
+            $table->foreign('idNombre')->references('id')->on('nombres')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('idMarca')->unsigned()->nullable();
+            $table->foreign('idMarca')->references('id')->on('marcas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nserie');
             $table->string('cod_interno');
             $table->string('capacidad');
             $table->string('clase_oiml');
             $table->float('error_max');
-            $table->string('lugar_almacenamiento');
+            $table->integer('idUbicacion')->unsigned()->nullable();
+            $table->foreign('idUbicacion')->references('id')->on('ubicaciones')->onDelete('cascade')->onUpdate('cascade');
             $table->date('fcompra');
             $table->string('norden_compra');
             $table->string('proveedor');

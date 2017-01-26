@@ -3,6 +3,9 @@ function agregar(argumento){
 
 		if(argumento==1){var ruta = "nuevo_usuario";}
         if(argumento==2){var ruta = "nuevo_equipo";}
+        if(argumento==3){var ruta = "nuevo_nombre";}
+        if(argumento==4){var ruta = "nueva_marca";}
+        if(argumento==5){var ruta = "nueva_ubicacion";}
 
 		$("#contenido_principal").html($("#cargador").html());
 		   
@@ -16,6 +19,9 @@ function listas(lista){
 
         if(lista==1){var ruta = "lista_usuarios";}
         if(lista==2){var ruta = "lista_equipos";}
+        if(lista==3){var ruta = "lista_nombres";}
+        if(lista==4){var ruta = "lista_marcas";}
+        if(lista==5){var ruta = "lista_ubicaciones";}
 
         $("#contenido_principal").html($("#cargador").html());
 
@@ -37,9 +43,45 @@ function editar_usuario(id_usuario) {
 }
 
 function editar_equipo(id_equipo) {
-//funcion para mostrar y actualizar la informacion de un usuario
+//funcion para mostrar y actualizar la informacion de un equipo
 
     var ruta = "editar_equipo/"+id_equipo+"";
+
+    $("#contenido_principal").html($("#cargador").html());
+
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+}
+
+function editar_nombre(id_nombre) {
+//funcion para mostrar y actualizar la informacion de un nombre
+
+    var ruta = "editar_nombre/"+id_nombre+"";
+
+    $("#contenido_principal").html($("#cargador").html());
+
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+}
+
+function editar_marca(id_marca) {
+//funcion para mostrar y actualizar la informacion de una marca
+
+    var ruta = "editar_marca/"+id_marca+"";
+
+    $("#contenido_principal").html($("#cargador").html());
+
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+}
+
+function editar_ubicacion(id_ubicacion) {
+//funcion para mostrar y actualizar la informacion de un lugar de almacenamiento
+
+    var ruta = "editar_ubicacion/"+id_ubicacion+"";
 
     $("#contenido_principal").html($("#cargador").html());
 
@@ -88,12 +130,22 @@ function mostrar_equipo(id_equipo) {
         var formulario=$(this);
         var usuario=$(this).attr("id");
         var equipo=$(this).attr("id");
-        
+        var nombre=$(this).attr("id");
+        var marca=$(this).attr("id");
+        var ubicacion=$(this).attr("id");
+
         if(usuario=="nuevo_usuario"){ var ruta="crear_usuario"; var nota="notificacion"; }
         if(equipo=="nuevo_equipo"){ var ruta="crear_equipo"; var nota="notificacion"; }
+        if(nombre=="nuevo_nombre"){ var ruta="crear_nombre"; var nota="notificacion"; }
+        if(marca=="nueva_marca"){ var ruta="crear_marca"; var nota="notificacion"; }
+        if(ubicacion=="nueva_ubicacion"){ var ruta="crear_ubicacion"; var nota="notificacion"; }
+
 
         if(usuario=="editar_usuario"){ var ruta="actualizar_usuario"; var nota="notificacion"; }
         if(equipo=="editar_equipo"){ var ruta="actualizar_equipo"; var nota="notificacion"; }
+        if(nombre=="editar_nombre"){ var ruta="actualizar_nombre"; var nota="notificacion"; }
+        if(marca=="editar_marca"){ var ruta="actualizar_marca"; var nota="notificacion"; }
+        if(ubicacion=="editar_ubicacion"){ var ruta="actualizar_ubicacion"; var nota="notificacion"; }
 
         if(usuario=="cambiar_contrasena"){ var ruta="cambiar_contrasena"; var nota="notificacion_contrasena"; }
 
@@ -114,6 +166,18 @@ function mostrar_equipo(id_equipo) {
 
                         if(equipo==nuevo_equipo){
                             $('#'+equipo+'').trigger("reset");
+                        }
+
+                        if(nombre==nuevo_nombre){
+                            $('#'+nombre+'').trigger("reset");
+                        }
+
+                        if(marca==nueva_marca){
+                            $('#'+marca+'').trigger("reset");
+                        }
+
+                        if(ubicacion==nueva_ubicacion){
+                            $('#'+ubicacion+'').trigger("reset");
                         }
 
                     }
@@ -197,6 +261,42 @@ function eliminar_equipo(argumento) {
     $.get(ruta, function (resultado) {
         $("#" + divresul + "").html(resultado);
         listas(2);
+    })
+}
+
+function eliminar_nombre(argumento) {
+
+    var ruta = "eliminar_nombre/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(3);
+    })
+}
+
+function eliminar_marca(argumento) {
+
+    var ruta = "eliminar_marca/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(4);
+    })
+}
+
+function eliminar_ubicacion(argumento) {
+
+    var ruta = "eliminar_ubicacion/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(5);
     })
 }
 

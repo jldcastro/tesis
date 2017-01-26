@@ -19,13 +19,13 @@
 
                     <div class="form-group has-feedback col-md-12">
                         <label for="equipo">Equipo</label>
-                        <input type="text" class="form-control" id="equipo" name="equipo" value="<?= $equipo->equipo; ?>" disabled>
+                        <input type="text" class="form-control" id="id_nombre" name="id_nombre" value="<?= $equipo->nombre->equipo; ?>" disabled>
                         <span class="fa fa-briefcase form-control-feedback"></span>
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
                         <label for="marca_modelo">Marca/Modelo</label>
-                        <input type="text" class="form-control" id="marca_modelo" name="marca_modelo" value="<?= $equipo->marca_modelo; ?>" disabled>
+                        <input type="text" class="form-control" id="id_marca" name="id_marca" value="<?= $equipo->marca->marca_modelo; ?>" disabled>
                         <span class="fa fa-barcode form-control-feedback"></span>
                     </div>
 
@@ -61,7 +61,7 @@
 
                     <div class="form-group has-feedback col-md-12">
                         <label for="lugar_almacenamiento">Lugar de almacenamiento</label>
-                        <input type="text" class="form-control" id="lugar_almacenamiento" name="lugar_almacenamiento" value="<?= $equipo->lugar_almacenamiento; ?>" disabled>
+                        <input type="text" class="form-control" id="id_ubicacion" name="id_ubicacion" value="<?= $equipo->ubicacion->lugar_almacenamiento; ?>" disabled>
                         <span class="fa fa-map-marker form-control-feedback"></span>
                     </div>
 

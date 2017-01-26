@@ -142,13 +142,24 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-briefcase"></i> <span>Equipos</span>
+                                <i class="fa fa-briefcase"></i> <span>Fichas Equipos</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li class="active"><a href="javascript:void(0);" onclick="listas(2);"><i class="fa fa-file-word-o"></i>Formulario F-4</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-file-word-o"></i>Formulario F-5</a></li>
                                 <li class="active"><a href="#"><i class="fa fa-file-word-o"></i>Formulario F-18</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-wrench"></i> <span>Mantenedores</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(3);"><i class="fa fa-user"></i>Nombres</a></li>
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(4);"><i class="fa fa-barcode"></i>Marcas</a></li>
+                                <li class="active"><a href="javascript:void(0);" onclick="listas(5);"><i class="fa fa-map-marker"></i>Ubicaciones</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
