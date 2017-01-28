@@ -300,18 +300,6 @@ function eliminar_ubicacion(argumento) {
     })
 }
 
-function descargar_word(id) {
-//funcion para mostrar y actualizar la informacion de un usuario
-
-    var ruta = "descargar_word/"+id+"";
-
-    $("#contenido_principal").html($("#cargador").html());
-
-    $.get(ruta,function(resultado){
-        $("#contenido_principal").html(resultado);
-        listas(2);
-    })
-}
 
 
 

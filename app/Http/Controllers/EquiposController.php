@@ -209,11 +209,8 @@ class EquiposController extends Controller
         }
     }
 
-    public function descargar_word($id)
+    public function descargar_f4($id)
     {
-        $nombres = Nombre::all();
-        $marcas = Marca::all();
-        $ubicaciones = Ubicacion::all();
         $templateWord = new TemplateProcessor('word/F4 - Hoja de vida de equipos.docx');
 
         $resultado = Equipo::find($id);
@@ -245,6 +242,10 @@ class EquiposController extends Controller
         $templateWord->setValue('observacion', $resultado->observacion);
 
         $templateWord->saveAs('word/f4/equipo'.$id.'.docx');
-        header("Content-Disposition: attachment; filename=equipo" .$id . ".docx; charset=iso-8859-1");
+
+        $ruta = 'word/f4/equipo'.$id.'.docx';
+
+        return response()->download($ruta);
+
     }
 }

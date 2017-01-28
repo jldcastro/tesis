@@ -67,7 +67,7 @@ Route::get('editar_equipo/{id}', 'EquiposController@editar_equipo');
 Route::post('actualizar_equipo', 'EquiposController@actualizar_equipo');
 Route::get('mostrar_equipo/{id}', 'EquiposController@mostrar_equipo');
 Route::get('eliminar_equipo/{id}', 'EquiposController@eliminar_equipo');
-Route::get('descargar_word/{id}','EquiposController@descargar_word');
+Route::get('descargar_f4/{id}','EquiposController@descargar_f4');
 
 
 //Rutas cotización
