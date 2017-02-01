@@ -2,6 +2,14 @@
 
     <div class="box-header">
         <h3 class="box-title">Lista de equipos</h3>
+        <br><br>
+        <h6 class="box-title">Buscar Equipos</h6>
+        <div class="input-group input-group-sm col-md-3">
+            <input type="text" class="form-control" id="dato_buscado">
+            <span class="input-group-btn">
+                <button class="btn btn-info btn-flat" type="button" onclick="buscarusuario();" ><i class="fa fa-fw a fa-search"></i></button>
+            </span>
+        </div>
     </div>
 
     <div class="box-body">
@@ -31,7 +39,7 @@
                         <td><button class=".btn  btn-success btn-xs" onclick="editar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-pencil-square-o"></i> Actualizar</button>
                             <button class=".btn  btn-warning btn-xs" onclick="mostrar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-eye"></i> Detalles</button>
                             <button class=".btn  btn-danger btn-xs" onclick="eliminar_equipo(<?= $equipo->id; ?>);" ><i class="fa fa-fw fa-remove"></i> Eliminar</button>
-                            <a href="descargar_f4/<?= $equipo->id  ?>"><button class=".btn  bg-navy btn-xs"><i class="fa fa-fw fa-file-word-o"></i> Descargar Word</button></a>
+                            <a href="descargar_f4/<?= $equipo->id  ?>"><button class=".btn  bg-navy btn-xs"><i class="fa fa-fw fa-file-word-o"></i> Descargar</button></a>
                         </td>
                     </tr>
 

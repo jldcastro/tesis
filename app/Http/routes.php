@@ -16,7 +16,7 @@
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
- 
+
 // Rutas para registrar
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
@@ -33,6 +33,7 @@ Route::get('mostrar_usuario/{id}', 'UsuariosController@mostrar_usuario');
 Route::post('imagen_usuario', 'UsuariosController@imagen_usuario');
 Route::post('cambiar_contrasena', 'UsuariosController@cambiar_contrasena');
 Route::get('eliminar_usuario/{id}', 'UsuariosController@eliminar_usuario');
+Route::get('buscar_usuarios/{dato}', 'UsuariosController@buscar_usuarios');
 
 //Rutas mantenedores nombres
 Route::get('nuevo_nombre', 'NombresController@nuevo_nombre');
@@ -58,7 +59,7 @@ Route::get('editar_ubicacion/{id}', 'UbicacionesController@editar_ubicacion');
 Route::post('actualizar_ubicacion', 'UbicacionesController@actualizar_ubicacion');
 Route::get('eliminar_ubicacion/{id}', 'UbicacionesController@eliminar_ubicacion');
 
-//Rutas equipos
+//Rutas formulario f4
 Route::get('nuevo_equipo', 'EquiposController@nuevo_equipo');
 Route::post('crear_equipo', 'EquiposController@crear_equipo');
 Route::post('imagen_equipo', 'EquiposController@imagen_equipo');
@@ -68,7 +69,12 @@ Route::post('actualizar_equipo', 'EquiposController@actualizar_equipo');
 Route::get('mostrar_equipo/{id}', 'EquiposController@mostrar_equipo');
 Route::get('eliminar_equipo/{id}', 'EquiposController@eliminar_equipo');
 Route::get('descargar_f4/{id}','EquiposController@descargar_f4');
+Route::get('buscar_equipos/{dato}', 'EquiposController@buscar_equipos');
 
+//Rutas formulario f5
+
+Route::get('listas_equipos/{page?}','ListaEquiposController@listas_equipos');
+Route::get('descargar_f5/{id}','ListaEquiposController@descargar_f5');
 
 //Rutas cotización
 Route::get('solicitud','CotizacionController@cotizacion');

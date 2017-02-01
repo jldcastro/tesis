@@ -36,4 +36,11 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function scopeBusqueda($query,$dato="")
+    {
+        $resultado= $query->where('codigo_usuario','like','%'.$dato.'%');
+
+        return  $resultado;
+    }
 }

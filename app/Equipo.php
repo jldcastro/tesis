@@ -24,4 +24,13 @@ class Equipo extends Model
     {
         return $this->hasOne('App\Ubicacion','id','idUbicacion');
     }
+
+    public function scopeBusqueda($query,$dato="")
+    {
+        $resultado= $query->whereIn('idNombre',function($q)use($dato){
+            $q->select('id')->from('equipos')->where('equipo','like',"%{$dato}%")->get();
+        });
+
+        return  $resultado;
+    }
 }

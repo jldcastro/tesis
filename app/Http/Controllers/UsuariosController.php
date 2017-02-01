@@ -180,4 +180,12 @@ class UsuariosController extends Controller
             return view("mensajes.incorrecto")->with("mensaje", "Error al actualizar la contraseña");
         }
     }
+
+    public function buscar_usuarios($dato="")
+    {
+
+        $usuarios= User::Busqueda($dato)->paginate(10);
+        return view('formularios.usuarios.lista_usuarios')
+            ->with("usuarios", $usuarios );
+    }
 }

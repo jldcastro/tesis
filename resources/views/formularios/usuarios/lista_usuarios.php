@@ -2,6 +2,14 @@
 
     <div class="box-header">
         <h3 class="box-title">Lista de usuarios</h3>
+        <br><br>
+        <h6 class="box-title">Buscar Usuarios</h6>
+        <div class="input-group input-group-sm col-md-3">
+            <input type="text" class="form-control" id="dato_buscado">
+            <span class="input-group-btn">
+                <button class="btn btn-info btn-flat" type="button" onclick="buscarusuario();" ><i class="fa fa-fw a fa-search"></i></button>
+            </span>
+        </div>
     </div>
 
 <div class="box-body">              
@@ -50,7 +58,7 @@
             {
     ?>
 
-    <br/><div class='alert alert-warning'><label style='color:#FA206A'>No existe ningun usuario dentro de la lista</label></div>
+    <br/><div class='alert alert-warning'><label>No existe ningun usuario dentro de la lista</label></div>
 
     <?php
         }

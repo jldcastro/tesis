@@ -248,4 +248,12 @@ class EquiposController extends Controller
         return response()->download($ruta);
 
     }
+
+    public function buscar_equipos($dato="")
+    {
+
+        $equipos= User::Busqueda($dato)->paginate(10);
+        return view('formularios.f4.lista_equipos')
+            ->with("equipos", $equipos );
+    }
 }

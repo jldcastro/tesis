@@ -22,6 +22,7 @@ function listas(lista){
         if(lista==3){var ruta = "lista_nombres";}
         if(lista==4){var ruta = "lista_marcas";}
         if(lista==5){var ruta = "lista_ubicaciones";}
+        if(lista==6){var ruta = "listas_equipos";}
 
         $("#contenido_principal").html($("#cargador").html());
 
@@ -298,6 +299,21 @@ function eliminar_ubicacion(argumento) {
         $("#" + divresul + "").html(resultado);
         listas(5);
     })
+}
+
+function buscarusuario(){
+
+    var dato=$("#dato_buscado").val();
+    if(dato != "")
+    {
+        var ruta="buscar_usuarios/"+dato+"";
+    }
+
+    $("#contenido_principal").html($("#cargador_empresa").html());
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+
 }
 
 
