@@ -13,7 +13,12 @@
             <table id="tabla_equipos" class="table table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th style="width:10px">Id</th>
+                    <th style="width:40px">N°</th>
+                    <th>Equipo</th>
+                    <th>Serie</th>
+                    <th>Certificado</th>
+                    <th>Ubicación</th>
+                    <th style="width:30px"></th>
                 </tr>
                 </thead>
 
@@ -24,14 +29,17 @@
 
                     <tr role="row" class="odd">
                         <td class="sorting_1"><?= $equipo->id; ?></td>
-                        <td>
-                            <a href="descargar_f5/<?= $equipo->id  ?>"><button class=".btn  bg-navy btn-xs"><i class="fa fa-fw fa-file-word-o"></i> Descargar</button></a>
-                        </td>
+                        <td><?= $equipo->nombre->equipo ." ".$equipo->marca->marca_modelo; ?></td>
+                        <td><?= $equipo->nserie ?></td>
+                        <td><?= $equipo->ncertificado ?></td>
+                        <td><?= $equipo->ubicacion->lugar_almacenamiento ?></td>
                     </tr>
 
                 <?php
                 }
                 ?>
+
+
 
             </table>
 
@@ -42,7 +50,7 @@
         {
             ?>
 
-            <br/><div class='alert alert-warning'><label>No existe ningun equipo dentro de la lista</label></div>
+            <br/><div class='alert alert-warning'><label>No existe ninguna lista de equipos dentro de la lista</label></div>
 
         <?php
         }
@@ -50,7 +58,8 @@
 
     </div>
 </div>
-
-
+<div class="form-group has-feedback">
+    <a href="descargar_f5"><button class=".btn  bg-navy btn-xs"><i class="fa fa-fw fa-file-word-o"></i> Descargar</button></a>
+</div>
 
 

@@ -53,7 +53,7 @@
     </div>
 </div>
 <div class="form-group has-feedback">
-    <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="agregar(3);" style="color: #ffffff"> Agregar Nombre</a></button>
+    <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="agregar(3);" style="color: #ffffff"> Agregar Equipo</a></button>
 </div>
 
 

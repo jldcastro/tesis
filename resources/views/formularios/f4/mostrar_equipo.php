@@ -132,8 +132,8 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
-                        <label for="actividad">Actividad</label>
-                        <input type="text" class="form-control" id="actividad" name="actividad" value="<?= $equipo->actividad; ?>" disabled>
+                        <label for="id_actividad">Actividad</label>
+                        <input type="text" class="form-control" id="id_actividad" name="id_actividad" value="<?= $equipo->actividad->nombre; ?>" disabled>
                         <span class="fa fa-clock-o form-control-feedback"></span>
                     </div>
 

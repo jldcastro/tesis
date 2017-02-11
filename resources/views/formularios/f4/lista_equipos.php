@@ -7,7 +7,7 @@
         <div class="input-group input-group-sm col-md-3">
             <input type="text" class="form-control" id="dato_buscado">
             <span class="input-group-btn">
-                <button class="btn btn-info btn-flat" type="button" onclick="buscarusuario();" ><i class="fa fa-fw a fa-search"></i></button>
+                <button class="btn btn-info btn-flat" type="button" onclick="buscarequipo();" ><i class="fa fa-fw a fa-search"></i></button>
             </span>
         </div>
     </div>
@@ -30,6 +30,7 @@
                 <tbody>
                 <?php
                 foreach($equipos as $equipo){
+
                     ?>
 
                     <tr role="row" class="odd">
@@ -67,6 +68,7 @@
 <div class="form-group has-feedback">
     <button class=".btn btn-primary col-md-offset-5"><i class="fa fa-plus"></i><a href="javascript:void(0);" onclick="agregar(2);" style="color: #ffffff"> Agregar Equipo</a></button>
 </div>
+
 
 
 

@@ -135,9 +135,12 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-12">
-                        <label for="actividad">Actividad</label>
-                        <input type="text" class="form-control" id="actividad" name="actividad">
-                        <span class="fa fa-clock-o form-control-feedback"></span>
+                        <label for="id_actividad">Actividad</label>
+                        <select id="id_actividad" name="id_actividad" class="form-control">
+                            <?php foreach($actividades as $actividad){ ?>
+                                <option value="<?= $actividad->id; ?>"><?= $actividad->nombre; ?> </option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback col-md-12">

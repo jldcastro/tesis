@@ -55,7 +55,7 @@ class UbicacionesController extends Controller
 
     public function editar_ubicacion($id)
     {
-        //funcion para mostrar los datos de un lugar de almacenamiento
+        //funcion para editar los datos de un lugar de almacenamiento
         $ubicacion=Ubicacion::find($id);
         $contador=count($ubicacion);
         if($contador>0){

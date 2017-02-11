@@ -35,6 +35,14 @@ Route::post('cambiar_contrasena', 'UsuariosController@cambiar_contrasena');
 Route::get('eliminar_usuario/{id}', 'UsuariosController@eliminar_usuario');
 Route::get('buscar_usuarios/{dato}', 'UsuariosController@buscar_usuarios');
 
+//Rutas mantenedores actividades
+Route::get('nueva_actividad', 'ActividadesController@nueva_actividad');
+Route::post('crear_actividad', 'ActividadesController@crear_actividad');
+Route::get('lista_actividades/{page?}', 'ActividadesController@lista_actividades');
+Route::get('editar_actividad/{id}', 'ActividadesController@editar_actividad');
+Route::post('actualizar_actividad', 'ActividadesController@actualizar_actividad');
+Route::get('eliminar_actividad/{id}', 'ActividadesController@eliminar_actividad');
+
 //Rutas mantenedores nombres
 Route::get('nuevo_nombre', 'NombresController@nuevo_nombre');
 Route::post('crear_nombre', 'NombresController@crear_nombre');
@@ -73,8 +81,8 @@ Route::get('buscar_equipos/{dato}', 'EquiposController@buscar_equipos');
 
 //Rutas formulario f5
 
-Route::get('listas_equipos/{page?}','ListaEquiposController@listas_equipos');
-Route::get('descargar_f5/{id}','ListaEquiposController@descargar_f5');
+Route::get('listas_equipos/{page?}','EquiposController@listas_equipos');
+Route::get('descargar_f5/','EquiposController@descargar_f5');
 
 //Rutas cotización
 Route::get('solicitud','CotizacionController@cotizacion');

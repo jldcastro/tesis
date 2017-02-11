@@ -6,6 +6,7 @@ use App\Equipo;
 use App\Nombre;
 use App\Marca;
 use App\Ubicacion;
+use App\Actividad;
 use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -31,7 +32,8 @@ class EquiposController extends Controller
         $nombres = Nombre::all();
         $marcas = Marca::all();
         $ubicaciones = Ubicacion::all();
-        return view('formularios.f4.nuevo_equipo')->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones);
+        $actividades = Actividad::all();
+        return view('formularios.f4.nuevo_equipo')->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones)->with("actividades",$actividades);
     }
 
     //presenta la lista y paginación de equipos
@@ -40,8 +42,9 @@ class EquiposController extends Controller
         $nombres = Nombre::all();
         $marcas = Marca::all();
         $ubicaciones = Ubicacion::all();
+        $actividades = Actividad::all();
         $equipos= Equipo::paginate(10);
-        return view('formularios.f4.lista_equipos')->with("equipos", $equipos )->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones);
+        return view('formularios.f4.lista_equipos')->with("equipos", $equipos )->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones)->with("actividades",$actividades);
     }
 
     //Formulario para nuevo usuario
@@ -67,7 +70,7 @@ class EquiposController extends Controller
         $equipo->intervalo_verificacion=$request->input("intervalo_verificacion");
         $equipo->criterio_aceptacion=$request->input("criterio_aceptacion");
         $equipo->observaciones=$request->input("observaciones");
-        $equipo->actividad=$request->input("actividad");
+        $equipo->idActividad=$request->input("id_actividad");
         $equipo->f_realizacion=$request->input("f_realizacion");
         $equipo->f_proxima=$request->input("f_proxima");
         $equipo->realizado_por=$request->input("realizado_por");
@@ -93,11 +96,12 @@ class EquiposController extends Controller
         $nombres = Nombre::all();
         $marcas = Marca::all();
         $ubicaciones = Ubicacion::all();
+        $actividades = Actividad::all();
         $equipo=Equipo::find($id);
 
         $contador=count($equipo);
         if($contador>0){
-            return view("formularios.f4.editar_equipo")->with("equipo",$equipo)->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones);;
+            return view("formularios.f4.editar_equipo")->with("equipo",$equipo)->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones)->with("actividades",$actividades);
         }
         else
         {
@@ -130,7 +134,7 @@ class EquiposController extends Controller
         $equipo->intervalo_verificacion=$request->input("intervalo_verificacion");
         $equipo->criterio_aceptacion=$request->input("criterio_aceptacion");
         $equipo->observaciones=$request->input("observaciones");
-        $equipo->actividad=$request->input("actividad");
+        $equipo->idActividad=$request->input("id_actividad");
         $equipo->f_realizacion=$request->input("f_realizacion");
         $equipo->f_proxima=$request->input("f_proxima");
         $equipo->realizado_por=$request->input("realizado_por");
@@ -234,7 +238,7 @@ class EquiposController extends Controller
         $templateWord->setValue('intervalo_verificacion', $resultado->intervalo_verificacion);
         $templateWord->setValue('criterio_aceptacion', $resultado->criterio_aceptacion);
         $templateWord->setValue('observaciones', $resultado->observaciones);
-        $templateWord->setValue('actividad', $resultado->actividad);
+        $templateWord->setValue('actividad', $resultado->actividad->nombre);
         $templateWord->setValue('f_realizacion', $resultado->f_realizacion);
         $templateWord->setValue('f_proxima', $resultado->f_proxima);
         $templateWord->setValue('realizado_por', $resultado->realizado_por);
@@ -252,8 +256,44 @@ class EquiposController extends Controller
     public function buscar_equipos($dato="")
     {
 
-        $equipos= User::Busqueda($dato)->paginate(10);
+        $equipos= Equipo::Busqueda($dato)->paginate(10);
         return view('formularios.f4.lista_equipos')
             ->with("equipos", $equipos );
+    }
+
+    //presenta la lista y paginación de equipos
+    public function listas_equipos()
+    {
+        $nombres = Nombre::all();
+        $marcas = Marca::all();
+        $ubicaciones = Ubicacion::all();
+        $equipos= Equipo::paginate(10);
+        return view('formularios.f5.listas_equipos')->with("equipos", $equipos )->with("nombres",$nombres)->with("marcas",$marcas)->with("ubicaciones",$ubicaciones);
+    }
+
+    public function descargar_f5()
+    {
+        $templateWord = new TemplateProcessor('word/F5 - Listado de equipos.docx');
+
+        $equipos = Equipo::all();
+        $templateWord->cloneBlock('CLONEME',count($equipos));
+        
+        $i= 1;
+        foreach($equipos as $equipo)
+        {
+            $templateWord->setValue('equipo',$equipo->nombre->equipo,$i);
+            $templateWord->setValue('nserie',$equipo->nserie,$i);
+            $templateWord->setValue('ncertificado',$equipo->ncertificado,$i);
+            $templateWord->setValue('lugar_almacenamiento',$equipo->ubicacion->lugar_almacenamiento,$i);
+            $i++;
+        }
+
+        $templateWord->saveAs('word/f5/listado-equipos.docx');
+
+        $ruta = 'word/f5/listado-equipos.docx';
+
+        return response()->download($ruta);
+
+
     }
 }

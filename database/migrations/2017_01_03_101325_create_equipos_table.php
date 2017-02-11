@@ -36,7 +36,8 @@ class CreateEquiposTable extends Migration
             $table->string('intervalo_verificacion');
             $table->string('criterio_aceptacion');
             $table->mediumText('observaciones');
-            $table->string('actividad');
+            $table->integer('idActividad')->unsigned()->nullable();
+            $table->foreign('idActividad')->references('id')->on('actividades')->onDelete('cascade')->onUpdate('cascade');
             $table->date('f_realizacion');
             $table->date('f_proxima');
             $table->string('realizado_por');

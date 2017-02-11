@@ -6,6 +6,8 @@ function agregar(argumento){
         if(argumento==3){var ruta = "nuevo_nombre";}
         if(argumento==4){var ruta = "nueva_marca";}
         if(argumento==5){var ruta = "nueva_ubicacion";}
+        if(argumento==6){var ruta = "nueva_actividad";}
+        if(argumento==7){var ruta = "descargar_f5";}
 
 		$("#contenido_principal").html($("#cargador").html());
 		   
@@ -23,8 +25,9 @@ function listas(lista){
         if(lista==4){var ruta = "lista_marcas";}
         if(lista==5){var ruta = "lista_ubicaciones";}
         if(lista==6){var ruta = "listas_equipos";}
+        if(lista==7){var ruta = "lista_actividades";}
 
-        $("#contenido_principal").html($("#cargador").html());
+    $("#contenido_principal").html($("#cargador").html());
 
             $.get(ruta,function(resultado){
                 $("#contenido_principal").html(resultado);
@@ -91,6 +94,18 @@ function editar_ubicacion(id_ubicacion) {
     })
 }
 
+function editar_actividad(id_actividad) {
+//funcion para mostrar y actualizar la informacion de una actividad
+
+    var ruta = "editar_actividad/"+id_actividad+"";
+
+    $("#contenido_principal").html($("#cargador").html());
+
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+}
+
 $(document).on("click",".div_modal",function(e){
     //funcion para ocultar las capas modales
     $("#capa_modal").hide();
@@ -134,12 +149,14 @@ function mostrar_equipo(id_equipo) {
         var nombre=$(this).attr("id");
         var marca=$(this).attr("id");
         var ubicacion=$(this).attr("id");
+        var actividad=$(this).attr("id");
 
         if(usuario=="nuevo_usuario"){ var ruta="crear_usuario"; var nota="notificacion"; }
         if(equipo=="nuevo_equipo"){ var ruta="crear_equipo"; var nota="notificacion"; }
         if(nombre=="nuevo_nombre"){ var ruta="crear_nombre"; var nota="notificacion"; }
         if(marca=="nueva_marca"){ var ruta="crear_marca"; var nota="notificacion"; }
         if(ubicacion=="nueva_ubicacion"){ var ruta="crear_ubicacion"; var nota="notificacion"; }
+        if(actividad=="nueva_actividad"){ var ruta="crear_actividad"; var nota="notificacion"; }
 
 
         if(usuario=="editar_usuario"){ var ruta="actualizar_usuario"; var nota="notificacion"; }
@@ -147,6 +164,7 @@ function mostrar_equipo(id_equipo) {
         if(nombre=="editar_nombre"){ var ruta="actualizar_nombre"; var nota="notificacion"; }
         if(marca=="editar_marca"){ var ruta="actualizar_marca"; var nota="notificacion"; }
         if(ubicacion=="editar_ubicacion"){ var ruta="actualizar_ubicacion"; var nota="notificacion"; }
+        if(actividad=="editar_actividad"){ var ruta="actualizar_actividad"; var nota="notificacion"; }
 
         if(usuario=="cambiar_contrasena"){ var ruta="cambiar_contrasena"; var nota="notificacion_contrasena"; }
 
@@ -178,6 +196,10 @@ function mostrar_equipo(id_equipo) {
                         }
 
                         if(ubicacion==nueva_ubicacion){
+                            $('#'+ubicacion+'').trigger("reset");
+                        }
+
+                        if(actividad==nueva_actividad){
                             $('#'+ubicacion+'').trigger("reset");
                         }
 
@@ -301,12 +323,39 @@ function eliminar_ubicacion(argumento) {
     })
 }
 
+function eliminar_actividad(argumento) {
+
+    var ruta = "eliminar_actividad/" + argumento + "";
+    var divresul = "notificacion";
+    $("#" + divresul + "").html($("#cargador").html());
+
+    $.get(ruta, function (resultado) {
+        $("#" + divresul + "").html(resultado);
+        listas(7);
+    })
+}
+
 function buscarusuario(){
 
     var dato=$("#dato_buscado").val();
     if(dato != "")
     {
         var ruta="buscar_usuarios/"+dato+"";
+    }
+
+    $("#contenido_principal").html($("#cargador_empresa").html());
+    $.get(ruta,function(resultado){
+        $("#contenido_principal").html(resultado);
+    })
+
+}
+
+function buscarequipo(){
+
+    var dato=$("#dato_buscado").val();
+    if(dato != "")
+    {
+        var ruta="buscar_equipos/"+dato+"";
     }
 
     $("#contenido_principal").html($("#cargador_empresa").html());
